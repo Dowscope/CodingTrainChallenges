@@ -8,3 +8,6 @@ He use the P5 language for JAVASCRIPT.
 
 This is my attempt to create the same challange but in different languages.
 Primarily in C++.
+
+## Challenges 
+-   CC1 - Starfield | C++ | MacOS
