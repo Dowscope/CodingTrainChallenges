@@ -1,6 +1,6 @@
 This is the Repo for all coding challenges completed by me for the:
 
-http://www.codingtrain.com
+http://www.thecodingtrain.com
 
 Watch the youtube videos on the site to witness a wonderful teacher 
 teaching the art of programming using the JAVA and JAVASCRIPT language.
