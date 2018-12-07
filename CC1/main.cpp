@@ -23,7 +23,18 @@ int main(int argc, char const *argv[])
     // Initialize the screen
     screen = new Screen(WINDOW_WIDTH, WINDOW_HEIGHT, title);
 
-    std::cout << screen->didInitialize << std::endl;
+    // Declare a switch for the main game loop
+    bool isRunning = true;
+
+    // Main Game Loop
+    while (isRunning){
+        SDL_Event e;
+        while (SDL_PollEvent(&e)){
+            if (e.type == SDL_QUIT){
+                isRunning = false;
+            }
+        }
+    }
 
     std::cout << "Starfield Completed" << std::endl;
     return 0;

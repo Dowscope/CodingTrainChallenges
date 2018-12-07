@@ -19,6 +19,9 @@ public:
     ~Screen();
 
     bool didInitialize = false;
+
+    void clear();
+    void present();
 };
 
 Screen::Screen(int w, int h, char* aTitle)
@@ -62,4 +65,16 @@ bool Screen::_initialize()
     }
     return true;
 }
+
+// Function that will call the SDL function to clear the renderer
+void Screen::clear() {
+    SDL_SetRenderDrawColor(mainRenderer, 0, 0, 0, 255);
+    SDL_RenderClear(mainRenderer);
+}
+
+// Function that will call the SDL function to present the renderer to the screen
+void Screen::present() {
+    SDL_RenderPresent(mainRenderer);
+}
+
 #endif
