@@ -1,7 +1,7 @@
-/* Coding Challenge #1
- * Starfield
+/* Coding Challenge
+ * Name of Challenge: 
  * Created By Tim Dowling
- * Date: Dec 5, 2018
+ * Date: Dec 8, 2018
  */
 
 #include <iostream>

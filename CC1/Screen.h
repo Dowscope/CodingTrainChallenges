@@ -1,3 +1,11 @@
+/************************************************************
+ * Screen.h
+ * Created by Tim Dowling
+ * 
+ * File used to display to a window.  Must include this file 
+ * in your program
+ * ***********************************************************/
+
 #ifndef SCREEN_H
 #define SCREEN_H
 
@@ -22,6 +30,7 @@ public:
 
     void clear();
     void present();
+    void terminate();
 };
 
 Screen::Screen(int w, int h, char* aTitle)
@@ -40,12 +49,15 @@ Screen::~Screen()
 bool Screen::_initialize()
 {
     // Initialize SDL
+    std::cout << "Initializing SDL....";
     if (SDL_Init(SDL_INIT_VIDEO) != 0){
         std::cout << "SCREEN_H: SDL did not initialize" << std::endl;
         return false;
     }
+    std::cout << "OK!" << std::endl;
 
     // Create our game window
+    std::cout << "Creating Window....";
     mainWindow = SDL_CreateWindow(_title,
                                     SDL_WINDOWPOS_CENTERED,
                                     SDL_WINDOWPOS_CENTERED,
@@ -56,13 +68,16 @@ bool Screen::_initialize()
         std::cout << "SCREEN_H: Window was not created" << std::endl;
         return false;
     }
+    std::cout << "OK!" << std::endl;
 
     // Create our renderer
+    std::cout << "Creating Renderer....";
     mainRenderer = SDL_CreateRenderer(mainWindow, -1, SDL_RENDERER_ACCELERATED);
     if (mainRenderer == NULL) {
         std::cout << "SCREEN_H: Renderer was not created" << std::endl;
         return false;
     }
+    std::cout << "OK!" << std::endl;
     return true;
 }
 
@@ -75,6 +90,12 @@ void Screen::clear() {
 // Function that will call the SDL function to present the renderer to the screen
 void Screen::present() {
     SDL_RenderPresent(mainRenderer);
+}
+
+void Screen::terminate(){
+    SDL_DestroyRenderer(mainRenderer);
+    SDL_DestroyWindow(mainWindow);
+    SDL_Quit();
 }
 
 #endif
