@@ -31,6 +31,8 @@ public:
     void clear();
     void present();
     void terminate();
+
+    void renderStar(int x, int y);
 };
 
 Screen::Screen(int w, int h, char* aTitle)
@@ -83,7 +85,7 @@ bool Screen::_initialize()
 
 // Function that will call the SDL function to clear the renderer
 void Screen::clear() {
-    SDL_SetRenderDrawColor(mainRenderer, 0, 0, 0, 255);
+    SDL_SetRenderDrawColor(mainRenderer, 255, 0, 0, 255);
     SDL_RenderClear(mainRenderer);
 }
 
@@ -96,6 +98,16 @@ void Screen::terminate(){
     SDL_DestroyRenderer(mainRenderer);
     SDL_DestroyWindow(mainWindow);
     SDL_Quit();
+}
+
+void Screen::renderStar(int x, int y){
+    SDL_Rect r;
+    r.x = x;
+    r.y = y;
+    r.w = 8;
+    r.h = 8;
+    SDL_SetRenderDrawColor(mainRenderer, 255, 255, 255, 255);
+    SDL_RenderFillRect(mainRenderer, &r);
 }
 
 #endif
