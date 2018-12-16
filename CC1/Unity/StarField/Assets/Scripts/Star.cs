@@ -8,6 +8,7 @@ public class Star {
 	public int Y { get; protected set; }
 
 	public Star() {
-		Debug.Log("The Screen Width is " + Screen.Width);
+		X = Random.Range(0, Screen.width);
+		Y = Random.Range(0, Screen.height);
 	}
 }
