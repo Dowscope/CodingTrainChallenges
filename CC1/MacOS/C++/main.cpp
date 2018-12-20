@@ -15,6 +15,7 @@
 // Declare Functions
 void update();
 void render();
+int map(float value, int start1, int stop1, int start2, int stop2);
 
 // Declare the width and height that the window will be.
 const int WINDOW_WIDTH = 1000;
@@ -35,7 +36,7 @@ int main(int argc, char const *argv[])
     srand(time(NULL));
 
     // Set the title of the project
-    char title[] = "CC1";
+    char title[] = "Coding Challenge #1 - Starfield";
 
     // Initialize the screen
     screen = new Screen(WINDOW_WIDTH, WINDOW_HEIGHT, title);
@@ -48,15 +49,16 @@ int main(int argc, char const *argv[])
     // Initialize Stars
     for(int i = 0; i < MAX_STARS; i++)
     {
-        int x = rand() % WINDOW_WIDTH;
-        int y = rand() % WINDOW_HEIGHT;
-        int z = rand() % WINDOW_WIDTH;
+        int x = rand() % (WINDOW_WIDTH + 1) + (-WINDOW_WIDTH / 2);
+        int y = rand() % (WINDOW_HEIGHT + 1) + (-WINDOW_HEIGHT / 2);
+        int z = rand() % (WINDOW_WIDTH + 1) + (-WINDOW_WIDTH / 2);
 
         Star s(x, y, z);
         stars.push_back(s);
     }
     
-
+    // Create a last time reference.
+    Uint32 timeout = SDL_GetTicks() + Uint32(4000/60);
     // Main Game Loop
     std::cout << "Game Starting!" << std::endl;
     while (isRunning){
@@ -67,11 +69,15 @@ int main(int argc, char const *argv[])
             }
         }
 
-        update();
+        if ( SDL_TICKS_PASSED( SDL_GetTicks(), timeout ) ){
+            update();
 
-        screen->clear();
-        render();
-        screen->present();
+            screen->clear();
+            render();
+            screen->present();
+
+            timeout = SDL_GetTicks() + Uint32(4000/60);
+        }
     }
 
     std::cout << "Game Ended" << std::endl;
@@ -83,7 +89,21 @@ int main(int argc, char const *argv[])
 }
 
 void update(){
+    
+    for(auto s = stars.begin(); s != stars.end(); s++)
+    {
+        s->update();
 
+        int x = s->getX();
+        int y = s->getY();
+        int z = s->getZ();
+
+        x = map( float(x) / float(z), 1, 0, -WINDOW_WIDTH/2, WINDOW_WIDTH/2);
+        y = map( float(y) / float(z), 1, 0, -WINDOW_HEIGHT/2, WINDOW_HEIGHT/2);
+
+        s->setX(x);
+        s->setY(y);
+    }
 }
 
 void render() {
@@ -93,4 +113,12 @@ void render() {
         screen->renderStar(s->getX(), s->getY());
     }
     
+}
+
+// Helper Functions
+int map(float value, int start1, int stop1, int start2, int stop2){
+    float out = float(start2) + (float(stop2) - float(start2)) *
+                ((value - float(start1)) / (float(stop1) - float(start1)));
+    
+    return int(out);
 }

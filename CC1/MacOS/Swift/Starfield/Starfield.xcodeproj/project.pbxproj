@@ -12,6 +12,9 @@
 		935DE7C021C7300500A92873 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935DE7BF21C7300500A92873 /* ViewController.swift */; };
 		935DE7C221C7300600A92873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 935DE7C121C7300600A92873 /* Assets.xcassets */; };
 		935DE7C521C7300600A92873 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 935DE7C321C7300600A92873 /* Main.storyboard */; };
+		935DE7EA21C731C500A92873 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935DE7E921C731C500A92873 /* Star.swift */; };
+		935DE7EF21C7329400A92873 /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935DE7EE21C7329400A92873 /* SpriteComponent.swift */; };
+		935DE7F421C87A7200A92873 /* MoveComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935DE7F321C87A7200A92873 /* MoveComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +45,9 @@
 		935DE7C721C7300600A92873 /* Starfield.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Starfield.entitlements; sourceTree = "<group>"; };
 		935DE7CC21C7300600A92873 /* StarfieldTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarfieldTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		935DE7D721C7300600A92873 /* StarfieldUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarfieldUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		935DE7E921C731C500A92873 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
+		935DE7EE21C7329400A92873 /* SpriteComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		935DE7F321C87A7200A92873 /* MoveComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,8 @@
 		935DE7B621C7300500A92873 /* Starfield */ = {
 			isa = PBXGroup;
 			children = (
+				935DE7ED21C7326D00A92873 /* Components */,
+				935DE7EC21C7325800A92873 /* Entities */,
 				935DE7B721C7300500A92873 /* AppDelegate.swift */,
 				935DE7BD21C7300500A92873 /* GameScene.swift */,
 				935DE7BF21C7300500A92873 /* ViewController.swift */,
@@ -99,6 +107,23 @@
 				935DE7C721C7300600A92873 /* Starfield.entitlements */,
 			);
 			path = Starfield;
+			sourceTree = "<group>";
+		};
+		935DE7EC21C7325800A92873 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				935DE7E921C731C500A92873 /* Star.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		935DE7ED21C7326D00A92873 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				935DE7EE21C7329400A92873 /* SpriteComponent.swift */,
+				935DE7F321C87A7200A92873 /* MoveComponent.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				935DE7C021C7300500A92873 /* ViewController.swift in Sources */,
+				935DE7EF21C7329400A92873 /* SpriteComponent.swift in Sources */,
+				935DE7F421C87A7200A92873 /* MoveComponent.swift in Sources */,
 				935DE7BE21C7300500A92873 /* GameScene.swift in Sources */,
 				935DE7B821C7300500A92873 /* AppDelegate.swift in Sources */,
+				935DE7EA21C731C500A92873 /* Star.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

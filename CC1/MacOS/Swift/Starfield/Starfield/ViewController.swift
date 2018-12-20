@@ -18,7 +18,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         if let view = self.skView {
-            let scene = GameScene()
+            let scene = GameScene(size: view.bounds.size)
             scene.scaleMode = .aspectFill
             view.presentScene(scene)
             
