@@ -9,7 +9,7 @@
 #include <SDL2/SDL.h>
 #include <stdlib.h>
 #include <time.h>
-#include "Screen.h"
+#include "../../Utilities/Screen.h"
 #include "Star.h"
 
 // Declare Functions
